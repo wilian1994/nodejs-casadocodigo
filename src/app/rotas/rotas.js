@@ -28,15 +28,53 @@ module.exports = (app) => {
                     }
                 ))
                 .catch(erro => console.log(erro));
-        // livroDao.lista(function(erro, resultados) {
-
-        //     resp.marko(
-        //         require('../views/livros/lista/lista.marko'),
-        //         {
-        //             livros: resultados
-        //         }
-        //     );
-
-        // });
     });
+
+    app.get('/livros/form', function(req, resp) {
+        resp.marko(require('../views/livros/form/form.marko'), { livro: {} });
+    });
+ 
+    app.post('/livros', function(req, resp) {
+        console.log(req.body);
+        const livroDao = new LivroDao(db);
+        livroDao.adiciona(req.body)
+                .then(resp.redirect('/livros'))
+                .catch(erro => console.log(erro));
+    });
+
+    app.put('/livros', function(req, resp) {
+        console.log(req.body);
+        const livroDao = new LivroDao(db);
+        livroDao.atualiza(req.body)
+                .then(resp.redirect('/livros'))
+                .catch(erro => console.log(erro));
+    });
+
+    //DELETE
+    app.delete('/livros/:id', function(req, resp){
+        const id = req.params.id;
+        
+        //realizamos a remoção do livro, se tudo for ok, retornaremos o status 200 que é de ok
+        const livroDao = new LivroDao(db);
+        livroDao.remove(id)
+        .then(() => resp.status(200).end())
+        .catch(erro => console.log(erro));
+    });
+
+    // BUSCANDO LIVRO
+    app.get('/livros/form/:id', function(req, resp){
+        const id = req.params.id;
+        const livroDao = new LivroDao(db);
+
+        livroDao.buscaPorId(id)
+            .then(livro =>
+                resp.marko(
+                    require('../views/livros/form/form.marko'),
+                    { livro: livro}
+                )
+            )
+            .catch(erro => console.log(erro));
+    });
+
+
 };

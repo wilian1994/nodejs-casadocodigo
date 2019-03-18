@@ -8,4 +8,8 @@ npm install marko@4.13.4-1 --save-exact
 -- INSERIR NO PACKAGE.JSON
 "start": "nodemon server.js --ignore *.marko.js"
 
---- INSTALAÇÃO DO SQLITE
+--- INSTALAÇÃO DO MIDDLEWARES
+npm install body-parser@1.18.3 --save-exact
+
+--- INSTALAÇÃO DO MIDDLEWARES OVERRIDE
+npm install method-override@3.0.0 --save-exact
