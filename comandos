@@ -1,5 +1,4 @@
 --- INSTALAÇÃO DO NODEMON, FERRAMENTA PARA AGILIZAR O PROCESSO PARA INICIAR O SERVIDOR.
-npm install -g nodemon@1.18.4 --save-exact
 
 --- INSTALAÇÃO DO MARKO, PARA FAZER POR EXEMPLO UMA LISTAGEM ESTÁTICA DE LIVROS
 npm install marko@4.13.4-1 --save-exact
@@ -13,3 +12,12 @@ npm install body-parser@1.18.3 --save-exact
 
 --- INSTALAÇÃO DO MIDDLEWARES OVERRIDE
 npm install method-override@3.0.0 --save-exact
+
+--- INSTALAÇÃO DO CONSIG
+npm install consign --save
+
+--- MYSQL
+npm install --save mysql
+
+--- EXPRESS-VALIDATOR
+npm install --save express-validator
